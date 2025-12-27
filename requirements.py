@@ -1,0 +1,7 @@
+Django
+djangorestframework
+django-cors-headers
+psutil
+dotenv
+requests
+bs4

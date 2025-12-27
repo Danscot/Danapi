@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>APIs | Danscot</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">Danscot<span>API</span></div>
+  <nav id="navLinks">
+    <a href="{% url 'home_page' %}">Home</a>
+    <a href="{% url 'api_page' %}">APIs</a>
+    <a href="{% url 'doc_page' %}">Docs</a>
+  </nav>
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <h1>Powerful APIs for Real Projects</h1>
+  <p>
+    Production-ready APIs designed for developers who want speed, reliability,
+    and clean integration.
+  </p>
+</section>
+
+<!-- INTRO -->
+<section class="api-intro">
+  <h2>What’s Available?</h2>
+  <p>
+    Each API is built with performance, simplicity, and scalability in mind.
+    Whether you’re building bots, websites, or automation tools, these APIs
+    are designed to plug in easily.
+  </p>
+</section>
+
+<!-- API LIST -->
+<section class="api-list">
+
+  <div class="api-item">
+    <div class="api-head">
+      <h3>YouTube Downloader API</h3>
+      <span class="tag free">FREE</span>
+    </div>
+
+    <p class="api-desc">
+      Download YouTube content as MP3 or MP4 using
+      a simple REST endpoint.
+    </p>
+
+    <ul class="api-features">
+      <li>✔ Download by URL</li>
+      <li>✔ MP3 & MP4 formats</li>
+      <li>✔ Fast response time</li>
+      <li>✔ Ideal for bots & apps</li>
+    </ul>
+
+    <div class="api-actions">
+      <a href="/api/youtube/downl/?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DDgV_oBb_ADw&fmt=720"
+   class="btn primary small">View Endpoint</a>
+
+
+    </div>
+  </div>
+
+  <div class="api-item">
+    <div class="api-head">
+      <h3>TikTok Downloader API</h3>
+      <span class="tag beta">BETA</span>
+    </div>
+
+    <p class="api-desc">
+      Download TikTok videos without watermark using a clean and stable API.
+    </p>
+
+    <ul class="api-features">
+      <li>✔ No watermark</li>
+      <li>✔ High-quality video</li>
+      <li>✔ Simple request format</li>
+    </ul>
+
+    <div class="api-actions">
+      <a href="docs.html" class="btn primary small">View Documentation</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="api-cta">
+  <h2>Ready to Integrate?</h2>
+  <p>
+    Check the documentation or start testing the APIs right away.
+  </p>
+  <a href="{% url 'doc_page' %}" class="btn secondary">Go to Docs</a>
+</section>
+
+<footer class="footer">
+  <p>© 2025 Danscot APIs</p>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

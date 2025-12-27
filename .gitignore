@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+*.pot
+*.pyc
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.python-version
+
+# Django
+*.sqlite3
+*.db
+db.sqlite3
+/staticfiles/
+/media/
+*.log
+local_settings.py
+secret_key.txt
+
+# PyCharm / IDEs
+.idea/
+*.iml
+.vscode/

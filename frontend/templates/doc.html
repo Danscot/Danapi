@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Docs | Danscot API</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">Danscot<span>API</span></div>
+  <nav id="navLinks">
+    <a href="{% url 'home_page' %}">Home</a>
+    <a href="{% url 'api_page' %}">APIs</a>
+    <a href="{% url 'doc_page' %}">Docs</a>
+  </nav>
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<section class="docs-simple">
+
+  <h1>API Documentation</h1>
+  <p class="docs-lead">
+    Danscot APIs are designed to be simple, predictable, and easy to integrate.
+    All APIs follow the same request structure and response format.
+  </p>
+
+  <!-- HOW IT WORKS -->
+  <div class="docs-block">
+    <h2>How it works</h2>
+    <p>
+      Each API is accessed via a standard <strong>GET</strong> request.
+      You provide the required parameters, and the API responds with a JSON
+      object containing the result or an error message.
+    </p>
+  </div>
+
+  <!-- BASE URL -->
+  <div class="docs-block">
+    <h2>Base URL</h2>
+    <pre class="code">https://api.danscot.com</pre>
+  </div>
+
+  <!-- REQUEST FORMAT -->
+  <div class="docs-block">
+    <h2>Request format</h2>
+    <pre class="code">
+GET /api-name/endpoint?param1=value&param2=value
+    </pre>
+    <p class="hint">
+      Replace <code>api-name</code> and parameters depending on the service
+      you want to use.
+    </p>
+  </div>
+
+  <!-- EXAMPLE -->
+  <div class="docs-block">
+    <h2>Example: YouTube Downloader API</h2>
+    <p>
+      Below is a basic example showing how to download a YouTube video as MP3.
+    </p>
+  </div>
+
+  <!-- PYTHON -->
+  <div class="docs-block">
+    <h3>Python (GET request)</h3>
+    <pre class="code">
+import requests
+
+url = "https://api.danscot.com/youtube/download"
+params = {
+    "query": "lofi hip hop",
+    "format": "mp3"
+}
+
+response = requests.get(url, params=params)
+data = response.json()
+
+print(data)
+    </pre>
+  </div>
+
+  <!-- JS -->
+  <div class="docs-block">
+    <h3>JavaScript (GET request)</h3>
+    <pre class="code">
+const url = new URL("https://api.danscot.com/youtube/download");
+url.search = new URLSearchParams({
+  query: "lofi hip hop",
+  format: "mp3"
+});
+
+fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+  });
+    </pre>
+  </div>
+
+  <!-- RESPONSE -->
+  <div class="docs-block">
+    <h2>Example response</h2>
+    <pre class="code">
+{
+  "status": "success",
+  "title": "Lofi Hip Hop Mix",
+  "download_url": "https://..."
+}
+    </pre>
+  </div>
+
+  <!-- NOTES -->
+  <div class="docs-block note">
+    <h2>Notes</h2>
+    <ul>
+      <li>All responses are JSON</li>
+      <li>Use proper URL encoding for parameters</li>
+      <li>Rate limits may apply depending on your plan</li>
+    </ul>
+  </div>
+
+</section>
+
+<footer class="footer">
+  <p>© 2025 Danscot APIs</p>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

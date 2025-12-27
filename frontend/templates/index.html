@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Danscot APIs</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">Danscot<span>API</span></div>
+  <nav id="navLinks">
+    <a href="{% url 'home_page' %}">Home</a>
+    <a href="{% url 'api_page' %}">APIs</a>
+    <a href="{% url 'doc_page' %}">Docs</a>
+  </nav>
+  <div class="burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Modern APIs built for developers</h1>
+  <p>
+    I build simple, fast, and reliable APIs for media, automation, and utilities.
+  </p>
+  <div class="hero-btns">
+    <a href="{% url 'api_page' %}"  class="btn primary">Explore APIs</a>
+    <a href="{% url 'doc_page' %}"  class="btn secondary">Read Docs</a>
+  </div>
+</section>
+
+<section class="about">
+  <h2>About Me</h2>
+  <p>
+    I'm <strong>Daniel Scotfield (Danscot)</strong>, a full-stack developer focused on
+    building backend systems, APIs, and automation tools that just work.
+  </p>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <h3>⚡ Fast</h3>
+    <p>Optimized endpoints with clean responses.</p>
+  </div>
+  <div class="feature">
+    <h3>🔐 Secure</h3>
+    <p>API keys, rate limits, and access control.</p>
+  </div>
+  <div class="feature">
+    <h3>🧩 Simple</h3>
+    <p>Clear documentation and easy integration.</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2025 Danscot APIs • Built with passion</p>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
