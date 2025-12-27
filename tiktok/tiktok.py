@@ -2,87 +2,112 @@ import requests
 
 from bs4 import BeautifulSoup
 
-
 class Tiktok:
 
-	def __init__(self):
+    def __init__(self):
 
-		self.base_url = "https://musicaldown.com/en"
+        self.base_url = "https://musicaldown.com/en"
 
-		self.post_url = "https://musicaldown.com/download"
+        self.post_url = "https://musicaldown.com/download"
 
-		self.session = requests.Session()
+        self.session = requests.Session()
 
-		self.session.headers.update({
+        self.session.headers.update({"User-Agent": "Mozilla/5.0"})
 
-			"User-Agent": "Mozilla/5.0"
-		})
+    def __get_token(self):
 
-	def __get_token(self):
+        resp = self.session.get(self.base_url)
 
-		resp = self.session.get(self.base_url)
+        soup = BeautifulSoup(resp.text, "lxml")
 
-		soup = BeautifulSoup(resp.text, "lxml")
+        url_input = soup.find("input", {"id": "link_url"})
 
-		url_input = soup.find("input", {"id": "link_url"})
-		
-		hidden_inputs = soup.find_all("input", {"type": "hidden"})
+        hidden_inputs = soup.find_all("input", {"type": "hidden"})
 
-		token_data = {
+        token_data = {
 
-			"url_field": url_input["name"],
+            "url_field": url_input["name"],
 
-			"token_field": None,
+            "token_field": None,
 
-			"token_value": None
-		}
+            "token_value": None
+        }
 
-		for inp in hidden_inputs:
+        for inp in hidden_inputs:
 
-			if inp.get("name") != "verify":
+            if inp.get("name") != "verify":
 
-				token_data["token_field"] = inp["name"]
+                token_data["token_field"] = inp["name"]
 
-				token_data["token_value"] = inp["value"]
+                token_data["token_value"] = inp["value"]
 
-		return token_data
+        return token_data
 
-	def downloader(self, url):
+    def downloader(self, url):
 
-		token = self.__get_token()
+        token = self.__get_token()
 
-		clean_url = url.strip().replace('"', '').replace("'", "")
+        clean_url = url.strip().replace('"', '').replace("'", "")
 
-		payload = {
+        clean_url = self.resolver(clean_url)
 
-			token["url_field"]: clean_url,
+        payload = {
 
-			token["token_field"]: token["token_value"],
+            token["url_field"]: clean_url,
 
-			"verify": "1"
-		}
+            token["token_field"]: token["token_value"],
 
-		r = self.session.post(self.post_url, data=payload)
+            "verify": "1"
+        }
 
-		soup = BeautifulSoup(r.text, "lxml")
+        r = self.session.post(self.post_url, data=payload)
 
-		results = []
+        soup = BeautifulSoup(r.text, "lxml")
 
-		for a in soup.find_all("a", href=True):
+        results = []
 
-			href = a["href"]
+        for a in soup.find_all("a", href=True):
 
-			event = a.get("data-event")
+            href = a["href"]
 
-			if href.startswith("https://fastdl.muscdn.app"):
+            event = a.get("data-event")
 
-				results.append({
+            if href.startswith("https://fastdl.muscdn.app"):
 
-					"type": event.replace("_download_click", "") if event else "unknown",
+                results.append({
 
-					"label": a.get_text(strip=True),
-					
-					"url": href
-				})
+                    "type": event.replace("_download_click", "") if event else "unknown",
 
-		return results
+                    "label": a.get_text(strip=True),
+
+                    "url": href
+                })
+
+        return results
+
+    def resolver(self, url):
+
+        if url.startswith("https://vm.tiktok.com/"):
+
+            headers = {
+
+                "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) "
+                              "AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
+            }
+
+            try:
+
+                response = requests.get(url, headers=headers, allow_redirects=True, timeout=10)
+
+                final_url = response.url
+
+                return final_url
+
+            except requests.RequestException as e:
+
+                print(f"Error resolving URL: {e}")
+
+                return url
+        else:
+
+            return url  
