@@ -74,13 +74,11 @@ class Youtube:
                 "description": snippet.get("description", ""),
             })
 
-            print(len(videos))
-
             if len(videos) == limit:
 
                 break
 
-            return videos
+        return videos
 
     def downloader(self, url, fmt):
 
