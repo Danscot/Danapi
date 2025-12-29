@@ -139,7 +139,5 @@ class Walpaper:
 
 		data = self.parse_gallery_html(html)
 
-		print(data)
-
-		return data[0]
+		return data
 	
