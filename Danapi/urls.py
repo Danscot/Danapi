@@ -28,5 +28,7 @@ urlpatterns = [
 
     path('api/', include('youtube.urls')),
 
-    path('api/', include('tiktok.urls'))
+    path('api/', include('tiktok.urls')),
+
+    path('api/', include('walpaper.urls')),
 ]
