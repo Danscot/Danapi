@@ -29,7 +29,9 @@ class Hanime:
 
 		result = []
 
-		href = []
+		i = 0
+
+		print(image_list[0].get('src'))
 
 		for r in href_list:
 
@@ -39,16 +41,19 @@ class Hanime:
 
 			streaming_link = data_link.rstrip('/').split('/')[-1]
 
-			href.append({
+
+			result.append({
 
 				"title": r.get_text(),
 
-				"link": lk,
+				"img": image_list[i].get('src'),
 
 				"streaming_link": f'https://r2.1hanime.com/{streaming_link}.mp4'
 
 				})
 
-		return href
+			i = i+1
+
+		return result
 
 

@@ -27,9 +27,7 @@ def search(request):
 	try:
 
 		result = hn.search(query)
-
-		print(result)
-
+		
 		return Response({
 
 			"status": "ok",
