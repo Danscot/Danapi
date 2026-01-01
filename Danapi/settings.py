@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'youtube',
     'tiktok',
-    'walpaper'
+    'walpaper',
+    'hanime'
 ]
 
 MIDDLEWARE = [

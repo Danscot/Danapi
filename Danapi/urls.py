@@ -31,4 +31,8 @@ urlpatterns = [
     path('api/', include('tiktok.urls')),
 
     path('api/', include('walpaper.urls')),
+
+
+    path('api/', include('hanime.urls')),
+
 ]

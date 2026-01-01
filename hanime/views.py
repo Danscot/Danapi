@@ -6,12 +6,12 @@ from rest_framework.exceptions import ValidationError
 
 from rest_framework import status
 
-from .walpaper import Walpaper
+from .hanime import Hanime
 
-wlp = Walpaper()
+hn = Hanime()
 
 @api_view(["GET"])
-def download(request):
+def search(request):
 
 	query = request.query_params.get('query')
 
@@ -26,7 +26,7 @@ def download(request):
 
 	try:
 
-		result = wlp.downlaoder(query)
+		result = hn.search(query)
 
 		print(result)
 

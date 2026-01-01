@@ -17,7 +17,7 @@ class Walpaper:
 		"1366x768", "1280x720"
 	]
 
-	def __init__(self, timeout=10):
+	def __init__(self, timeout=2):
 
 		self.timeout = timeout
 
@@ -82,7 +82,9 @@ class Walpaper:
 
 		return selected
 
-	def parse_gallery_html(self, html):
+	def parse_gallery_html(self, url):
+
+		html = requests.get(url, headers=self.BASE_HEADERS).text
 
 		soup = BeautifulSoup(html, "lxml")
 
@@ -131,11 +133,8 @@ class Walpaper:
 
 		url = f"https://www.wallpaperflare.com/search?wallpaper={query}"
 
-		#print(url)
+		r = self.parse_gallery_html(url)
 
-		html = requests.get(url, headers=self.BASE_HEADERS).text
+		print(r)
 
-		#print(html)
-
-		self.parse_gallery_html(html)
-	
+		return r	
