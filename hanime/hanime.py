@@ -41,12 +41,13 @@ class Hanime:
 
 			streaming_link = data_link.rstrip('/').split('/')[-1]
 
-
 			result.append({
 
 				"title": r.get_text(),
 
 				"img": image_list[i].get('src'),
+
+				"main_link": lk,
 
 				"streaming_link": f'https://r2.1hanime.com/{streaming_link}.mp4'
 
