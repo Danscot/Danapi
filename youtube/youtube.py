@@ -107,7 +107,11 @@ class Youtube:
 
         response = requests.get(endpoint)
 
+
         data = response.json()
+
+
+        print(data)
 
         if data.get("success") != True:
 
@@ -121,7 +125,11 @@ class Youtube:
 
         progress_url = data.get("progress_url")
 
+        print(progress_url)
+
         download_url = self.get_file(progress_url)
+
+        print(download_url)
 
         results = {
 
@@ -134,7 +142,7 @@ class Youtube:
 
         return results
 
-    def get_file(self, progress_url, retries=10):
+    def get_file(self, progress_url, retries=100):
 
         for _ in range(retries):
 
