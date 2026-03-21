@@ -1,8 +1,2 @@
-GET
-	https://p.savenow.to/ajax/download.php?
+REQUEST_KEY = "AP2JPn0f0Fp9IAujssJIRkBrHulMXAmBtPXYphcVuqSYXszPYGEPce0z7yy5IeeCDU5Vn5YTcBYgitWPXlVLkIxkcSGJtvdO4Y+URnYbxXuh6lgfki0TT/65nCNSoj5YIRjooCeewkRMQdx7JeAV/jWhyz26XztzKt6QggRmOuAV/A80BrUwXSZtwKhdSUhqVsYuTMj+harcsKIZLzNLzLfsL3dMXbYG8A9rQ2dY7lu63P/+egK69BtngI1+Y1NTawrEozMNA4Su9o7Z02dIfFb9Yh0x+lhlGTlcFJEqARhwZ3KNVO8EeJHzgvCHfgz4oUldHC0yEB/KNTgIiG3wtw=="
 
-	copyright=0&format=720&
-
-	url=https://www.youtube.com/watch?v=-M5fItg1bPg
-
-	&api=dfcb6d76f2f6a9894gjkege8a4ab232222
