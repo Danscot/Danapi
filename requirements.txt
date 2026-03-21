@@ -2,7 +2,11 @@ Django
 djangorestframework
 django-cors-headers
 psutil
-dotenv
+python-dotenv
 requests
-bs4
+beautifulsoup4
 lxml
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
